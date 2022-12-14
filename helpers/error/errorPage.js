@@ -4,12 +4,12 @@ const messageSt = {
     404: "Not found",
 }
 
-const ErrorPages = (status, message = messageSt[status]) => {
+const errorPages = (status, message = messageSt[status]) => {
 const error = new Error(message)
 error.status = status
 return error
 }
 
 module.exports = {
-    ErrorPages
+    errorPages
 }

@@ -1,12 +1,12 @@
-const {getContactById} = require('../../models/contacts')
-const {ErrorPages} = require('../../helpers/ErrorPage')
+const {schemaContacts} = require('../../models/schemaContacts')
+const {errorPages} = require('../../helpers/error')
 
 const getContactId = async (req, res, next) => {
     try {
       const {contactId} = req.params
-      const result = await getContactById(contactId)
+      const result = await schemaContacts.findOne({_id: contactId})
       if(!result){
-        throw ErrorPages(404, "Not found")
+        throw errorPages(404, "Not found")
       }
       res.json(result)
     } catch (error) {
