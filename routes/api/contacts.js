@@ -1,7 +1,7 @@
 const express = require('express')
 const {getContacts, getContactId, addContact, changeContact, deleteContact, updateStatusContact} = require('../../controllers/contacts')
-const schema = require('../../midlleware/validator/validatorJoi')
-const schemaWrapper = require('../../helpers/schemaWrapper')
+const {schema} = require('../../midlleware/validator')
+const {schemaWrapper} = require('../../helpers/schema')
 const router = express.Router()
 
 router.get('/', getContacts)

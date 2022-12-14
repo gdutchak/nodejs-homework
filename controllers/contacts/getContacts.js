@@ -1,4 +1,4 @@
-const schemaContacts = require('../../models/schemaContacts')
+const {schemaContacts} = require('../../models/schemaContacts')
 
 const getContacts = async (req, res, next) => {
     try {
