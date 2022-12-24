@@ -1,4 +1,5 @@
 const {Schema, default: mongoose} = require('mongoose')
+const {errorCode} = require('../../helpers/error')
 
 const schema = new Schema ({
     name: {
@@ -15,9 +16,16 @@ const schema = new Schema ({
       type: Boolean,
       default: false,
     },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+      required: true,
+    }
   },
   { versionKey: false}
   )
+
+schema.post("save", errorCode)
 
 const schemaContacts = mongoose.model('contact', schema)
 

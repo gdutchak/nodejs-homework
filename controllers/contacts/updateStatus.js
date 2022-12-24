@@ -3,7 +3,7 @@ const {schemaContacts} = require('../../models/schemaContacts')
 
 const updateStatusContact = async (req, res, next) => {
 try {
-    const {favorite} = req.body.body
+    const {favorite} = req.body
     const {contactId} = req.params
     if(!favorite) {
         throw Error(errorPages(400, "missing field favorite"))
