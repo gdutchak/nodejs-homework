@@ -1,8 +1,8 @@
-const {errorPages} = require('../error')
+const {errorPages} = require('../helpers/error')
 
 const schemaWrapper = schema => {
     const data = (req, _, next) => {
-        const {error} = schema.validate(req.body.body)
+        const {error} = schema.validate(req.body)
         if(error) {
             next(errorPages(400, error))
         }
