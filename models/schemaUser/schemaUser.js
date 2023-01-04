@@ -18,6 +18,10 @@ const schema = new Schema ({
     },
     token: {
       type: String,
+    },
+    avatarURL: {
+      type: String,
+      required: true,
     }
 
   }, {
