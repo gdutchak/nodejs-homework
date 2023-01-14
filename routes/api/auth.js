@@ -1,9 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const {validation, schemaWrapper, authenticate, upload} = require('../../midlleware')
-const {registerUser, loginUser, logoutUser, currentUser, subscriptionUpdate, avatarUpdate} = require('../../controllers/user')
+const {registerUser, loginUser, logoutUser, currentUser, subscriptionUpdate, avatarUpdate, verificationRequest, checkInVerify} = require('../../controllers/user')
 
 router.post('/users/register', schemaWrapper(validation.schemaJoiAuth), registerUser)
+
+router.get('/users/verify/:verificationToken', verificationRequest)
+
+router.post('/users/verify', schemaWrapper(validation.schemaJoiVerify) ,checkInVerify)
 
 router.get('/users/login', schemaWrapper(validation.schemaJoiAuth), loginUser)
 

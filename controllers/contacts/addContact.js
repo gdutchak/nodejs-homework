@@ -1,5 +1,5 @@
 const {schemaContacts} = require('../../models/schemaContacts')
-const {errorPages} = require('../../helpers/error')
+const {errorPages} = require('../../helpers')
 
 const addContactItem = async (req, res, next) => {
     try {

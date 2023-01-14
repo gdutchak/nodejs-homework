@@ -1,13 +1,16 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const {User} = require('../../models/schemaUser')
-const {errorPages} = require('../../helpers/error')
+const {errorPages} = require('../../helpers')
 
 const {SECRET_KEY} = process.env
 
 const loginUser = async(req, res, next) => {
  try {
-    const {email, password} = req.body
+    const {email, password, verificationToken} = req.body
+    if(!verificationToken) {
+        throw errorPages(404, 'User is not found')
+    }
     const user = await User.findOne({email})
     if (!user) {
         throw errorPages(401, {message: 'Email or password invalid'})

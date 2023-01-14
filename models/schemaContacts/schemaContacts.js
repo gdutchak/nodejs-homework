@@ -1,5 +1,5 @@
 const {Schema, default: mongoose} = require('mongoose')
-const {errorCode} = require('../../helpers/error')
+const {errorCode} = require('../../helpers')
 
 const schema = new Schema ({
     name: {

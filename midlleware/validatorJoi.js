@@ -37,10 +37,18 @@ const schemaJoiSubscription = Joi.object({
         .required()
 })
 
+const schemaJoiVerify = Joi.object({
+    email:
+        Joi.string()
+        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+        .required()
+})
+
 const validation = {
     schemaJoiContacts,
     schemaJoiAuth,
-    schemaJoiSubscription
+    schemaJoiSubscription,
+    schemaJoiVerify
 }
 
 module.exports = validation

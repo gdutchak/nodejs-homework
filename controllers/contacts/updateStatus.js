@@ -1,4 +1,4 @@
-const {errorPages} = require('../../helpers/error')
+const {errorPages} = require('../../helpers')
 const {schemaContacts} = require('../../models/schemaContacts')
 
 const updateStatusContact = async (req, res, next) => {

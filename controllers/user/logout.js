@@ -1,5 +1,5 @@
 const {User} = require('../../models/schemaUser')
-const {errorPages} = require('../../helpers/error')
+const {errorPages} = require('../../helpers')
 
 const logoutUser = async(req, res, next) => {
     try {
