@@ -1,14 +1,19 @@
+const sgMail = require('@sendgrid/mail')
 
-const sendMessage = (email) => {
+const {BASE_URL, SENDGRID_API_KEY} = process.env
+sgMail.setApiKey(SENDGRID_API_KEY);
+
+const sendMessage = async (email, verifyToken) => {
   const msg = {
       to: email,
       from: "galyna.dutchak99@gmail.com",
-      subject: 'Verify',
-      html: `<p>Let's verify your email so you can start working.</p><a href="/">${email}</a>
-      <p>Your link is active for 24 hours. After that, you will need to resend the verification email.</p><a href="http://localhost:3000/api/auth/users/verify/:verificationToken">Verify email</a>`,
+      subject: 'Verify your email',
+      html: `<p>Let's verify your email so you can start working.</p><p>${email}</p>
+      <a target="_blank" href="${BASE_URL}/api/auth/users/verify/${verifyToken}">Verify email</a>`,
     }
 
-    return msg
+    await sgMail.send(msg)
+    return true
 }
 
 module.exports = {sendMessage}

@@ -3,7 +3,7 @@ const {errorPages} = require('../../helpers')
 
 const verificationRequest = async (req, res, next) => {
     try {
-        const { verificationToken } = req.body
+        const { verificationToken } = req.params
         const user = await User.find({verificationToken})
         
         if(!user) {

@@ -7,14 +7,16 @@ const {SECRET_KEY} = process.env
 
 const loginUser = async(req, res, next) => {
  try {
-    const {email, password, verificationToken} = req.body
-    if(!verificationToken) {
-        throw errorPages(404, 'User is not found')
-    }
+    const {email, password} = req.body
+    
     const user = await User.findOne({email})
     if (!user) {
         throw errorPages(401, {message: 'Email or password invalid'})
     }
+    if(!user.verify) {
+        throw errorPages(401, 'User email not verify')
+    }
+
     const checkPassword = await bcrypt.compare(password, user.password)
     if (!checkPassword) {
         throw errorPages(401, {message: 'Email or password invalid'})
