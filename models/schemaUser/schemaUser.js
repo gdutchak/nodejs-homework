@@ -1,5 +1,5 @@
 const {Schema, default: mongoose} = require('mongoose')
-const {errorCode} = require('../../helpers/error')
+const {errorCode} = require('../../helpers')
 
 const schema = new Schema ({
     password: {
@@ -22,6 +22,14 @@ const schema = new Schema ({
     avatarURL: {
       type: String,
       required: true,
+    },
+    verificationToken: {
+      type: String,
+      required: [true, 'Verify token is required'],
+    },
+    verify: {
+      type: Boolean,
+      default: false,
     }
 
   }, {

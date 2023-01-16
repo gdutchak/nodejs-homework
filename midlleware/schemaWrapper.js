@@ -1,4 +1,4 @@
-const {errorPages} = require('../helpers/error')
+const {errorPages} = require('../helpers')
 
 const schemaWrapper = schema => {
     const data = (req, _, next) => {
